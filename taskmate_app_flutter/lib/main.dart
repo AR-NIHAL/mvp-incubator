@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:taskmate_app_flutter/features/tasks/ui/task_home_page.dart';
-
-void main() {
-  runApp(const MyApp());
+import 'package:hive_flutter/hive_flutter.dart';
+import 'features/tasks/ui/task_home_page.dart';
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('settings_box');
+  runApp(const TaskMateApp());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class TaskMateApp extends StatelessWidget {
+  const TaskMateApp({super.key});
   @override
   Widget build(BuildContext context) {
     final colorScheme = ColorScheme.fromSeed(seedColor: Colors.indigo);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "TaskMate",
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: colorScheme
-      ),
-
-       darkTheme: ThemeData(
+      title: 'TaskMate',
+      theme: ThemeData(useMaterial3: true, colorScheme: colorScheme),
+      darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(
@@ -28,11 +24,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-
       themeMode: ThemeMode.system,
-      home: TaskHomePage(
-      ),
-
+      home: const TaskHomePage(),
     );
   }
 }
