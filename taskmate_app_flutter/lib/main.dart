@@ -11,6 +11,7 @@ Future<void> main() async {
 
 class TaskMateApp extends StatelessWidget {
   const TaskMateApp({super.key});
+  
   @override
   Widget build(BuildContext context) {
     final colorScheme = ColorScheme.fromSeed(seedColor: Colors.indigo);
