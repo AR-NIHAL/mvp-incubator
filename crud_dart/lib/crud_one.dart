@@ -50,3 +50,46 @@ void addStudent() {
 
   print("Student added successfully!");
 }
+
+void viewStudents() {
+  if (students.isEmpty) {
+    print("No students found!");
+    return;
+  }
+
+  print("\n--- Student List ---");
+  for (var student in students) {
+    print(
+      "ID: ${student['id']}, Name: ${student['name']}, Age: ${student['age']}",
+    );
+  }
+}
+
+void updateStudent() {
+  stdout.write("Enter Student ID to update: ");
+  int id = int.parse(stdin.readLineSync()!);
+
+  for (var student in students) {
+    if (student['id'] == id) {
+      stdout.write("Enter New Name: ");
+      student['name'] = stdin.readLineSync()!;
+
+      stdout.write("Enter New Age: ");
+      student['age'] = int.parse(stdin.readLineSync()!);
+
+      print("Student updated successfully!");
+      return;
+    }
+  }
+
+  print("Student not found!");
+}
+
+void deleteStudent() {
+  stdout.write("Enter Student ID to delete: ");
+  int id = int.parse(stdin.readLineSync()!);
+
+  students.removeWhere((student) => student['id'] == id);
+
+  print("Student deleted (if existed).");
+}
