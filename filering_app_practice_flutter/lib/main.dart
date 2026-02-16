@@ -17,7 +17,7 @@ class TaskMateApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = ColorScheme.fromSeed(seedColor: Colors.indigo);
-    
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TaskMate',
