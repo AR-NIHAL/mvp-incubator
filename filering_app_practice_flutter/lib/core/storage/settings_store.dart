@@ -15,7 +15,4 @@ class SettingsStore {
   static Future<void> reset() async {
     await _box.delete(_firstOpenKey);
   }
-  static Future<void> reset() async {
-    await _box.delete(_firstOpenKey);
-  }
 }
